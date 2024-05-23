@@ -70,7 +70,7 @@
         </tr>
     </table>
     <div>
-        <a href="#" class="btn btn-success">UPDATE</a>
+        <a href="updateTask.jsp?id=<%=task.getId() %>" class="btn btn-success">UPDATE</a>
         <a href="tdelete?id=<%=task.getId() %>" class="btn btn-danger">DELETE</a>
         <a href="index.html" class="btn btn-primary">Go Back</a>
     </div>

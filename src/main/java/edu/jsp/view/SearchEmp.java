@@ -23,7 +23,7 @@ public class SearchEmp extends HttpServlet {
 		Controller controller =new Controller();
 		
 		HttpSession session = req.getSession();
-	
+	try {
 		int id=Integer.parseInt(req.getParameter("id"));
 		
 		if (controller.searchEmployee(id)!=null) {			
@@ -37,8 +37,10 @@ public class SearchEmp extends HttpServlet {
 			resp.sendRedirect("foundedEmp.jsp");
 		}
 		else {
-			resp.getWriter().write("<html><body><h3>employee not found</h3></body></html>");
-			System.out.println("Nooooot forund");
+//			resp.getWriter().write("<html><body><h3>employee not found</h3></body></html>");
+			resp.sendRedirect("empNotFound.html");
+		}}catch(Exception e) {
+			resp.sendRedirect("emptyField.html");
 		}
 		
 	}

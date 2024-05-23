@@ -18,7 +18,7 @@ public class UpdateEmp extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-	
+	try {
 		Controller controller= new Controller();
 		int id=0;
 		id=Integer.parseInt(req.getParameter("id"));
@@ -39,13 +39,10 @@ public class UpdateEmp extends HttpServlet {
 		controller.updateEmployee(employee);
 		System.out.println("updated");
 		resp.sendRedirect("allEmp.jsp");
-	}else {
-		System.err.println("error");
+	}}}catch(Exception e){
+		resp.sendRedirect("emptyField.html");
+	
 	}
-		
-		}else {
-			System.out.println("empty");
-		}
 		
 	}
 }

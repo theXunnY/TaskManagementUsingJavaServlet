@@ -23,16 +23,18 @@ public class Controller {
 	
 	
 	public Employee saveEmployee(Employee employee) {
-		
+		try {
 		if (employee!=null) {
 			transaction.begin();
 			manager.persist(employee);
 			transaction.commit();
 			return employee;
-		}
-		else {
+		}}catch(Exception e) {
+			e.printStackTrace();
 			return null;
 		}
+		return null;
+
 	}
 	
 	public Task saveTask(Task task) {
@@ -140,10 +142,8 @@ public class Controller {
 			transaction.begin();
 			manager.merge(employee);
 			transaction.commit();
-			System.out.println("updated");
 			return employee;
 		}else {
-			System.out.println("employee not found");
 			return null;
 		}
 	}
@@ -177,6 +177,19 @@ public class Controller {
 		}
 		
 	}
+
+	public Task updateTask(Task task) {
+		
+		if (task!=null) {
+		transaction.begin();
+		manager.merge(task);
+		transaction.commit();
+		
+		return task;
+	}else {
+		return null;
+	}
+		}
 	
 }
 

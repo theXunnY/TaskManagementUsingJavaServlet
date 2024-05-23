@@ -55,7 +55,7 @@
                     <th scope="col">Task Deadline</th>
                     <th scope="col">UPDATE TASK</th>
                     <th scope="col">DELETE TASK</th>
-					<th scope="col">ASSIGN TASK</th>                    
+				<!-- <th scope="col">ASSIGN TASK</th>  -->                    
                 </tr>
             </thead>
             <tbody>
@@ -66,9 +66,9 @@
                     <td><%= task.getStartDate() %></td>
                     <td><%= task.getEndDate() %></td>
                     
-                    <td><a class="btn btn-primary" href="#">UPDATE</a></td>
-                    <td><a class="btn btn-danger" href="tdelete?id=<%=task.getId() %>" >DELETE</a></td>
-                    <td><a class="btn btn-primary" href="assignTask?id=<%= task.getId()%>">ASSIGN</a></td>
+                    <td><a class="btn btn-primary" href="updateTask.jsp?id=<%=task.getId() %>">UPDATE</a></td>
+                    <td><a class="btn btn-danger" href="tdelete.jsp?id=<%=task.getId() %>" >DELETE</a></td>
+                   <!--   <td><a class="btn btn-primary" href="assignTasks.jsp?id=<%= task.getId()%>">ASSIGN</a></td> -->
                 </tr>
                 <% } %>
             </tbody>

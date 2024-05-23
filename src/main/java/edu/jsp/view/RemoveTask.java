@@ -14,7 +14,7 @@ public class RemoveTask extends HttpServlet{
 
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			
+			try {
 			int id= 0;
 			id=Integer.parseInt(req.getParameter("id"));
 			if (id>0) {
@@ -26,5 +26,9 @@ public class RemoveTask extends HttpServlet{
 				}
 			}
 			
+		}catch(Exception e) {
+			resp.sendRedirect("emptyField.html");
+	
 		}
+	}
 }

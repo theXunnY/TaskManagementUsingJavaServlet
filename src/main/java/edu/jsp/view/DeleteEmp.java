@@ -16,7 +16,10 @@ public class DeleteEmp extends HttpServlet{
 
 	 protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	            throws ServletException, IOException {
-	        // Get the employee ID from the request
+	       
+		 
+		 try {
+		 // Get the employee ID from the request
 	        int employeeId = Integer.parseInt(request.getParameter("id"));
 	        
 	        
@@ -35,5 +38,9 @@ public class DeleteEmp extends HttpServlet{
 	            System.out.println("error");
 
 	        }
+	    }catch(Exception e) {
+			response.sendRedirect("emptyField.html");
+	
 	    }
+	 }
 }

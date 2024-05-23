@@ -74,8 +74,8 @@
         </tr>
     </table>
     <div>
-        <a href="#" class="btn btn-success">UPDATE</a>
-        <a href="#" class="btn btn-danger">DELETE</a>
+        <a href="update.jsp?id=<%=employee.getId()%>" class="btn btn-success">UPDATE</a>
+        <a href="del?id=<%=employee.getId()%>"" class="btn btn-danger">DELETE</a>
         <a href="index.html" class="btn btn-primary">Go Back</a>
     </div>
 </div>

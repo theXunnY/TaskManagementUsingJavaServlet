@@ -21,7 +21,10 @@ public class SearchTask extends HttpServlet {
 		Controller controller= new Controller();
 		HttpSession session= req.getSession();
 		
-		Task task=controller.searchTask(Integer.parseInt(req.getParameter("id")));
+		try {
+			int id=0;
+			id=Integer.parseInt(req.getParameter("id"));
+		Task task=controller.searchTask(id);
 			if (task!=null) {
 				session.setAttribute("task", task);
 				System.err.println(Integer.parseInt(req.getParameter("id")));
@@ -29,5 +32,8 @@ public class SearchTask extends HttpServlet {
 				}else {
 					resp.sendRedirect("taskNotFound.jsp");	
 			}
+		}catch (Exception e) {
+		resp.sendRedirect("emptyField.html");
+		}
 	}
 }

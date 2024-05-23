@@ -12,38 +12,38 @@ import javax.servlet.http.HttpServletResponse;
 import edu.jsp.controller.Controller;
 import edu.jsp.entity.Task;
 
-@WebServlet(name = "addtask", urlPatterns = {"/addtask"})
-public class AddTask extends HttpServlet {
+@WebServlet(name = "updatetask" , urlPatterns = {"/updatetask"} )
+public class UpdateTask extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		String name="";
 		LocalDate start=LocalDate.now();
 		LocalDate end=LocalDate.now();
+		int id=0;
 		try {
 			name=req.getParameter("name");
 			start=LocalDate.parse(req.getParameter("start"));
 			end=LocalDate.parse(req.getParameter("end"));
-			
-			Task task= new Task();
-			task.settName(name);
-			task.setStartDate(start);
-			task.setEndDate(end);
 			Controller controller= new Controller();
-					
-			if(controller.saveTask(task)!=null) {
-				resp.sendRedirect("tSaved.jsp");
+			id=Integer.parseInt(req.getParameter("id"));
+			
+			if (id>0) {
+				Task task=controller.searchTask(id);				
+			
+			
+			if (task!=null) {
+				task.settName(name);
+				task.setStartDate(start);
+				task.setEndDate(end);
+				controller.updateTask(task);
+				resp.sendRedirect("allTask.jsp");
+				
+				}
 			}
-			
-			
-		}catch (Exception e) {
-			resp.sendRedirect("fieldCannotBeEmpty.html");
+		} catch (Exception e) {
+			resp.sendRedirect("emptyField.html");
+
 		}
-		
-		
-		
-	
-	
 	}
 }
